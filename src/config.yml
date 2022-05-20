@@ -7,4 +7,4 @@ executors:
       jtype: Text2vecEncoder
       metas:
         py_modules:
-          - text2vec_encoder.py
+          - server.py

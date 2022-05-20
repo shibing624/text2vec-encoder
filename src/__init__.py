@@ -5,4 +5,5 @@
 """
 __version__ = '0.0.1'
 
-from src.text2vec_encoder import Text2vecEncoder
+from src.server import Text2vecEncoder
+from src.client import Client

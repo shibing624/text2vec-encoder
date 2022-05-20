@@ -4,7 +4,7 @@
 @description: 
 """
 from jina import Flow
-from src.text2vec_encoder import Text2vecEncoder
+from src import Text2vecEncoder
 import os
 
 pwd_path = os.path.abspath(os.path.dirname(__file__))
