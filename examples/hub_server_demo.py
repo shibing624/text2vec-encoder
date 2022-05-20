@@ -5,7 +5,7 @@
 """
 from jina import Flow, Document
 
-f = Flow(port=49979).add(uses='jinahub://Text2vecEncoder')
+f = Flow(port=50001).add(uses='jinahub://Text2vecEncoder')
 
 with f:
     f.block()

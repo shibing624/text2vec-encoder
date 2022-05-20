@@ -1,0 +1,10 @@
+jtype: Flow
+with:
+  port: 50001
+executors:
+  - name: text2vec_encoder
+    uses:
+      jtype: Text2vecEncoder
+      metas:
+        py_modules:
+          - text2vec_encoder.py

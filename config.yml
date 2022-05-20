@@ -1,4 +1,0 @@
-jtype: Text2vecEncoder
-metas:
-  py_modules:
-    - transform_encoder.py

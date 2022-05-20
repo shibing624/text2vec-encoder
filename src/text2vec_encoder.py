@@ -4,13 +4,10 @@
 @description:
 """
 
-from typing import Dict, Iterable, Optional, Tuple
-
+from typing import Dict, Optional, Tuple
 import numpy as np
 import torch
-
 from transformers import AutoModel, AutoTokenizer
-
 from jina import DocumentArray, Executor, requests
 
 
@@ -25,7 +22,7 @@ class Text2vecEncoder(Executor):
             layer_index: int = -1,
             max_length: Optional[int] = 128,
             embedding_fn_name: str = '__call__',
-            device: str = 'cpu',
+            device: str = None,
             traversal_paths: str = '@r',
             batch_size: int = 32,
             *args,
@@ -59,8 +56,9 @@ class Text2vecEncoder(Executor):
         self.pooling_strategy = pooling_strategy
         self.layer_index = layer_index
         self.max_length = max_length
-
-        self.device = device
+        if device is None:
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = torch.device(device)
         self.embedding_fn_name = embedding_fn_name
 
         self.tokenizer = AutoTokenizer.from_pretrained(base_tokenizer_model)
