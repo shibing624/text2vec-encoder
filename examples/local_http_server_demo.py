@@ -3,9 +3,12 @@
 @author:XuMing(xuming624@qq.com)
 @description: 
 """
-from jina import Flow
-from src import Text2vecEncoder
 import os
+import sys
+from jina import Flow
+
+sys.path.append('..')
+from src import Text2vecEncoder
 
 pwd_path = os.path.abspath(os.path.dirname(__file__))
 
