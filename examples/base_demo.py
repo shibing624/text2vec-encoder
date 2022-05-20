@@ -13,4 +13,4 @@ f = Flow().add(
 doc = Document(content='如何更换花呗绑定银行卡')
 
 with f:
-    f.post(on='/foo', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
+    f.post(on='/encode', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))

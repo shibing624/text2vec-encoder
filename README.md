@@ -8,8 +8,27 @@ The `text` attribute represents the text to be encoded. This Executor will encod
 
 ## Usage
 
+From source deployment:
 
-Use the prebuilt images from Jina Hub in your Flow and encode an image:
+examples: [examples/client_demo.py](examples/client_demo.py)
+
+```python
+from docarray import Document, DocumentArray
+
+da = DocumentArray([Document(text='如何更换花呗绑定银行卡'), Document(text='hello'), Document(text='你好'), ])
+r = da.post('jinahub://Text2vecEncoder')
+
+print(r.to_json())
+```
+
+output:
+```shell
+"embedding": [-0.0004445354570634663, -0.2973471283 ...]
+```
+
+
+Use the prebuilt images from Jina Hub in your Flow and encode an text into a dense vector.
+
 
 ```python
 from jina import Flow, Document
@@ -19,7 +38,7 @@ f = Flow().add(uses='jinahub+docker://Text2vecEncoder')
 doc = Document(content='如何更换花呗绑定银行卡')
 
 with f:
-    f.post(on='/index', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
+    f.post(on='/encode', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
 ```
 
 
@@ -70,7 +89,7 @@ f = Flow().add(
 doc = Document(content='如何更换花呗绑定银行卡')
 
 with f:
-    f.post(on='/foo', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
+    f.post(on='/encode', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
 ```
 
 You can check the supported pre-trained models [here](https://huggingface.co/transformers/pretrained_models.html)
@@ -95,7 +114,7 @@ f = Flow().add(
 doc = Document(content='如何更换花呗绑定银行卡')
 
 with f:
-    f.post(on='/foo', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
+    f.post(on='/encode', inputs=doc, on_done=lambda resp: print(resp.docs[0].embedding))
 ```
 
 ## Reference
