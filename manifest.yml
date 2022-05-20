@@ -1,0 +1,5 @@
+manifest_version: 1
+name: Text2vecEncoder
+description: '`Text2vecEncoder` encodes text using transformer models'
+url: https://github.com/shibing624/text2vec-encoder
+keywords: [encoder, text, transformer, bert, PyTorch, 3.0-exclusive]
