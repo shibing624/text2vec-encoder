@@ -23,14 +23,13 @@ class Client:
         from jina import Client
 
         self._client = Client(**kwargs)
-        self._async_client = Client(**kwargs, asyncio=True)
         self._results = DocumentArray()
 
     def _get_post_payload(self, content, kwargs):
         return dict(
             on='/',
             inputs=self._iter_doc(content),
-            request_size=kwargs.get('batch_size', 8),
+            request_size=kwargs.get('batch_size', 256),
             total_docs=len(content) if hasattr(content, '__len__') else None,
         )
 

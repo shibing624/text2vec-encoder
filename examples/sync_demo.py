@@ -19,7 +19,7 @@ for j in range(10):
     tmp = data * (2 ** j)
     c_num_tokens = num_tokens * (2 ** j)
     start_t = time.time()
-    r = c.encode(tmp, batch_size=128)
+    r = c.encode(tmp)
     print('count size:', len(r))
     time_t = time.time() - start_t
     print('encoding %d sentences, spend %.2fs, %4d samples/s, %6d tokens/s' %
