@@ -3,7 +3,6 @@
 @author:XuMing(xuming624@qq.com)
 @description: 
 """
-import numpy as np
 import mimetypes
 from docarray import DocumentArray, Document
 
